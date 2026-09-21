@@ -1,0 +1,48 @@
+A2 EXHIBITS — BLUEPRINT ASSETS
+
+Hero photo: assets/a2-auro-02-large.webp (1600 x 1200).
+Approved hero blueprint: assets/a2-atturo-blueprint-photo-edit.png (1448 x 1086).
+The user approved this fresh photo-only image edit for installation. It restores
+clean booth outlines and ATTURO branding while removing surrounding venue clutter.
+It is an illustrative concept, not a pixel-exact trace or construction drawing.
+Both layers retain the same 4:3 ratio, shared frame, crop and motion transform.
+The original photo has not been edited.
+
+Lower comparison photo: assets/a2-forleone-large.webp (1600 x 1200).
+New blueprint: assets/a2-forleone-blueprint-photo-edit.png (1448 x 1086).
+Created directly from the Forleone photo using the same photo-edit approach.
+Clean booth outlines and FORLEONE FORGED branding replace the earlier SVG.
+Both layers use the same 4:3 frame and shared motion transform. As with the
+hero, this is an illustrative concept, not pixel-exact object registration.
+The original photo is unchanged. These are the site's two blueprint images.
+
+Rejected image/mesh-registration experiments remain outside the public site.
+The background remains a procedural animated line lattice, not an image. It is
+mounted once as a fixed layer, and its internal time, phase, speed, direction,
+perspective depths, ambient camera drift, and light/fog treatment remain
+independent from navigation. A separate oversized parent wrapper moves the live
+canvas horizontally without changing or restarting the wave renderer.
+Navigation uses live DOM layers instead of frozen browser snapshots, allowing
+the canvas animation to keep drawing throughout every retained page slide.
+Background positions use equal route-indexed units: Home 0, Gallery 1, Services 2,
+Process 3, and About 4. Each step is 6vw, so skipped pages traverse the full
+corresponding distance; the project-start page shares the terminal position.
+Wrapper travel has constant speed throughout each 760ms journey, matching the
+page slide. Longer jumps travel proportionally farther and faster. New navigation
+starts from the visible position if the previous journey is still in progress.
+The wrapper commits its resting position only after the slide completes, with
+both animation endpoints held to prevent a destination flash. Its navigation
+controller is separate from the wave renderer and is not cancelled by resize.
+The fixed header reserves one consistent content baseline on every route. Both
+page layers use that same baseline during navigation, eliminating vertical jumps.
+The header and footer are separate stationary transition layers. Only the main
+page content participates in the full-width horizontal slide.
+
+About now includes a photo-led company story and milestones based on the public
+A2 About page. Process groups its six stages into three chapters, with stage
+anchors and outcomes. Their styling is scoped to these pages.
+Gallery replaces the user-facing Work label; gallery.html is the main link and
+work.html remains a compatible entry. The internal work index is preserved.
+All 20 photos from a2exhibits.com/gallery are stored in assets/gallery, with a
+source manifest. The viewer supports next/previous, arrow keys, Escape, and
+focus restoration. No photo is repeated within the Gallery collection.
