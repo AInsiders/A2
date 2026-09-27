@@ -1,3 +1,54 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content="Prepare a project brief for your next trade show exhibit and contact A2 Exhibits in Las Vegas."/><meta name="theme-color" content="#071018"/><title>Start a Project | A2 Exhibits</title>  <script type="module" crossorigin src="./assets/main-TRysPRnf.js"></script>
+<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content="Prepare a project brief for your next trade show exhibit and contact A2 Exhibits in Las Vegas."/><meta name="theme-color" content="#071018"/><title>Start a Project | A2 Exhibits</title>  <script type="module" crossorigin src="./assets/main-BHAVcWse.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/main-COC-IP4l.css">
-</head><body data-page="start"><div id="root"></div></body></html>
+</head><body data-page="start"><div id="root"></div>
+<!-- Brevo Conversations {literal} -->
+<script>
+    (function(d, w, c) {
+        w.BrevoConversationsID = '6ab4369746594be7730a5f82';
+        w[c] = w[c] || function() {
+            (w[c].q = w[c].q || []).push(arguments);
+        };
+        var s = d.createElement('script');
+        s.async = true;
+        s.src = 'https://conversations-widget.brevo.com/brevo-conversations.js';
+        if (d.head) d.head.appendChild(s);
+    })(document, window, 'BrevoConversations');
+</script>
+<!-- /Brevo Conversations {/literal} -->
+<script src="https://cdn.brevo.com/js/sdk-loader.js" async></script>
+<script>
+  window.Brevo = window.Brevo || [];
+  Brevo.push(["init", { client_key: "1exoqr4w5oekx4gozpxlnbjh" }]);
+  document.addEventListener("submit", function (event) {
+    var form = event.target;
+    if (!form || !form.classList || !form.classList.contains("project-form")) return;
+    var data = new FormData(form);
+    var email = String(data.get("email") || "").trim();
+    if (!email) return;
+    var name = String(data.get("name") || "").trim();
+    var parts = name.split(/\s+/);
+    var first = parts.shift() || "";
+    var last = parts.join(" ");
+    var services = data.getAll("services").filter(Boolean).join(", ");
+    Brevo.push(["identify", {
+      identifiers: { email_id: email },
+      attributes: {
+        FIRSTNAME: first,
+        LASTNAME: last,
+        COMPANY: String(data.get("company") || ""),
+        SHOW_NAME: String(data.get("event") || ""),
+        SHOW_CITY: String(data.get("location") || ""),
+        SHOW_DATE: String(data.get("date") || ""),
+        BOOTH_SIZE: String(data.get("size") || ""),
+        BUDGET: String(data.get("budget") || ""),
+        SERVICES: services,
+        PROJECT_NOTES: String(data.get("message") || "")
+      }
+    }]);
+    Brevo.push(["track", "new_client_brief", { email: email }, {
+      company: String(data.get("company") || ""),
+      show: String(data.get("event") || "")
+    }]);
+  }, true);
+</script>
+</body></html>

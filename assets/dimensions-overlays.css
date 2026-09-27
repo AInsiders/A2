@@ -1,0 +1,2 @@
+.hero-scene::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:url("./a2-atturo-cad-dimensions.svg") 50% 53%/cover no-repeat;clip-path:inset(0 calc(100% - var(--hero-split)) 0 0)}
+.compare-frame::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:url("./a2-forleone-cad-dimensions.svg") center/cover no-repeat;clip-path:inset(0 calc(100% - var(--position)) 0 0)}

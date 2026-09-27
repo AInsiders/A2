@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1448" height="1086" viewBox="0 0 1448 1086" preserveAspectRatio="none">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse"><path d="M8 0 0 4 8 8" fill="none" stroke="#08bce5" stroke-width="1.5"/></marker>
+    <style>.dim{fill:none;stroke:#08bce5;stroke-width:2;marker-start:url(#arr);marker-end:url(#arr)}.ext{fill:none;stroke:#08bce5;stroke-width:1.5}.label{font:700 22px Arial,Helvetica,sans-serif;text-anchor:middle;fill:#072e44;paint-order:stroke;stroke:#fff;stroke-width:5px;stroke-linejoin:round}</style>
+  </defs>
+  <!-- Left display wall: length follows the perspective top edge, height at end -->
+  <path class="dim" d="M51 350 672 420"/>
+  <text class="label" x="362" y="369" transform="rotate(6 362 369)">≈18'-0"</text>
+  <path class="ext" d="M51 350 27 350 M58 840 34 840"/>
+  <path class="dim" d="M31 357 38 833"/>
+  <text class="label" x="20" y="653" transform="rotate(-89 20 653)">≈10'-0"</text>
+  <!-- Right display wall -->
+  <path class="dim" d="M993 454 1325 397"/>
+  <text class="label" x="1159" y="410" transform="rotate(-10 1159 410)">≈14'-0"</text>
+  <path class="ext" d="M1374 401 1398 401 M1374 814 1398 814"/>
+  <path class="dim" d="M1394 408 1394 807"/>
+  <text class="label" x="1413" y="666" transform="rotate(-90 1413 666)">≈10'-0"</text>
+  <!-- Counter front length and height -->
+  <path class="dim" d="M693 704 999 704"/>
+  <text class="label" x="846" y="696">≈8'-0"</text>
+  <path class="ext" d="M1000 707 1023 707 M1000 930 1023 930"/>
+  <path class="dim" d="M1019 714 1019 923"/>
+  <text class="label" x="1038" y="862" transform="rotate(-90 1038 862)">≈3'-6"</text>
+</svg>

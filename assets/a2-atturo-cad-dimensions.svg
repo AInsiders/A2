@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1456" height="1088" viewBox="0 0 1456 1088" preserveAspectRatio="none">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse"><path d="M8 0 0 4 8 8" fill="none" stroke="#08bce5" stroke-width="1.5"/></marker>
+    <style>.dim{fill:none;stroke:#08bce5;stroke-width:2;marker-start:url(#arr);marker-end:url(#arr)}.ext{fill:none;stroke:#08bce5;stroke-width:1.5}.label{font:700 22px Arial,Helvetica,sans-serif;text-anchor:middle;fill:#072e44;paint-order:stroke;stroke:#fff;stroke-width:5px;stroke-linejoin:round}</style>
+  </defs>
+  <!-- Main left wall length and height -->
+  <path class="dim" d="M553 340 746 281"/>
+  <text class="label" x="650" y="294" transform="rotate(-17 650 294)">≈10'-0"</text>
+  <path class="ext" d="M553 340 525 340 M553 700 525 700"/>
+  <path class="dim" d="M530 346 530 694"/>
+  <text class="label" x="516" y="555" transform="rotate(-90 516 555)">≈12'-0"</text>
+  <!-- Main right wall length and height -->
+  <path class="dim" d="M746 281 956 342"/>
+  <text class="label" x="851" y="295" transform="rotate(16 851 295)">≈10'-0"</text>
+  <path class="ext" d="M956 342 980 342 M956 770 980 770"/>
+  <path class="dim" d="M975 348 975 764"/>
+  <text class="label" x="990" y="593" transform="rotate(-90 990 593)">≈12'-0"</text>
+  <!-- Left return wall -->
+  <path class="dim" d="M382 438 526 400"/>
+  <text class="label" x="454" y="414" transform="rotate(-15 454 414)">≈8'-0"</text>
+  <path class="ext" d="M382 438 365 438 M382 538 365 538"/>
+  <path class="dim" d="M369 444 369 532"/>
+  <text class="label" x="356" y="513" transform="rotate(-90 356 513)">≈5'-0"</text>
+  <!-- Counter front length and end height -->
+  <path class="dim" d="M1163 724 1400 703"/>
+  <text class="label" x="1282" y="697" transform="rotate(-5 1282 697)">≈6'-0"</text>
+  <path class="ext" d="M1400 703 1420 703 M1400 850 1420 850"/>
+  <path class="dim" d="M1416 709 1416 844"/>
+  <text class="label" x="1434" y="807" transform="rotate(-90 1434 807)">≈3'-6"</text>
+</svg>

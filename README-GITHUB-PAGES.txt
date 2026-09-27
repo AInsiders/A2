@@ -8,10 +8,10 @@ Pages: Home, Gallery, Services, Process, About, Start a project.
 Gallery contains all 20 published gallery photos, stored locally, with enlarged viewing.
 gallery.html is the Gallery address; old work.html links open Gallery and update
 the address to gallery.html, preserving query strings and anchors.
-Motion: the Pause motion button controls the procedural background and parallax.
+Motion: the procedural background and parallax run automatically.
 Reduced-motion system preferences are respected automatically.
 Page navigation uses synchronized full-width slides, without page fading or rotation.
 Reduced motion uses an immediate page change; other browsers use live-content slides.
 All .html addresses remain directly accessible and refreshable on GitHub Pages.
-The inquiry form prepares a downloadable project brief locally; it does not send an email.
+The Start a project form sends the new-client brief to Brevo and also saves a copy on the device. It does not send an email by itself.
 Blueprints are concept illustrations based on the paired photographs, not construction drawings.
