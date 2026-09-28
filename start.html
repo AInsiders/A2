@@ -1,7 +1,6 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content="Prepare a project brief for your next trade show exhibit and contact A2 Exhibits in Las Vegas."/><meta name="theme-color" content="#071018"/><title>Start a Project | A2 Exhibits</title>  <script type="module" crossorigin src="./assets/main-BHAVcWse.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/main-COC-IP4l.css">
-</head><body data-page="start"><div id="root"></div>
-<!-- Brevo Conversations {literal} -->
+<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content="Prepare a project brief for your next trade show exhibit and contact A2 Exhibits in Las Vegas."/><meta name="theme-color" content="#071018"/><title>Start a Project | A2 Exhibits</title>  <script type="module" crossorigin src="./assets/main-DVkPFpyv.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/main-DyNhfDMT.css">
+</head><body data-page="start"><div id="root"></div><!-- Brevo Conversations {literal} -->
 <script>
     (function(d, w, c) {
         w.BrevoConversationsID = '6ab4369746594be7730a5f82';
@@ -25,30 +24,44 @@
     var data = new FormData(form);
     var email = String(data.get("email") || "").trim();
     if (!email) return;
-    var name = String(data.get("name") || "").trim();
-    var parts = name.split(/\s+/);
+    var parts = String(data.get("name") || "").trim().split(/\s+/);
     var first = parts.shift() || "";
     var last = parts.join(" ");
-    var services = data.getAll("services").filter(Boolean).join(", ");
-    Brevo.push(["identify", {
-      identifiers: { email_id: email },
-      attributes: {
-        FIRSTNAME: first,
-        LASTNAME: last,
-        COMPANY: String(data.get("company") || ""),
-        SHOW_NAME: String(data.get("event") || ""),
-        SHOW_CITY: String(data.get("location") || ""),
-        SHOW_DATE: String(data.get("date") || ""),
-        BOOTH_SIZE: String(data.get("size") || ""),
-        BUDGET: String(data.get("budget") || ""),
-        SERVICES: services,
-        PROJECT_NOTES: String(data.get("message") || "")
-      }
-    }]);
-    Brevo.push(["track", "new_client_brief", { email: email }, {
-      company: String(data.get("company") || ""),
-      show: String(data.get("event") || "")
-    }]);
+    var text = function (name) { return String(data.get(name) || "").trim(); };
+    var many = function (name) { return data.getAll(name).map(String).filter(Boolean); };
+    var attributes = {
+      FIRSTNAME: first,
+      LASTNAME: last,
+      PHONE: text("phone"),
+      COMPANY: text("company"),
+      JOB_TITLE: text("job"),
+      WEBSITE: text("website"),
+      PREFERRED_CONTACT: text("contact_method") ? [text("contact_method")] : [],
+      SHOW_NAME: text("event"),
+      SHOW_CITY: text("city"),
+      SHOW_VENUE: text("venue"),
+      SHOW_START_DATE: text("start_date"),
+      SHOW_END_DATE: text("end_date"),
+      MOVE_IN_DATE: text("move_in"),
+      BOOTH_NUMBER: text("booth"),
+      BOOTH_SIZE: text("size"),
+      PROJECT_TYPE: text("project_type") ? [text("project_type")] : [],
+      BUDGET_RANGE: text("budget") ? [text("budget")] : [],
+      PRIMARY_GOAL: text("goal") ? [text("goal")] : [],
+      EXPECTED_VISITORS: text("visitors"),
+      DECISION_DATE: text("decision"),
+      SERVICE_NEEDS: many("services"),
+      FEATURES_NEEDED: many("features"),
+      DESIGN_ASSETS: text("assets"),
+      PROJECT_NOTES: text("message"),
+      OPT_IN: data.get("consent") === "yes"
+    };
+    Object.keys(attributes).forEach(function (key) {
+      var value = attributes[key];
+      if (value === "" || (Array.isArray(value) && value.length === 0)) delete attributes[key];
+    });
+    Brevo.push(["identify", { identifiers: { email_id: email }, attributes: attributes }]);
+    Brevo.push(["track", "new_client_brief", { email: email }, { company: text("company"), show: text("event") }]);
   }, true);
 </script>
 </body></html>
