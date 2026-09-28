@@ -14,4 +14,20 @@
     })(document, window, 'BrevoConversations');
 </script>
 <!-- /Brevo Conversations {/literal} -->
+<script>
+  (function () {
+    function syncChat() {
+      var onForm = document.body && document.body.getAttribute("data-page") === "start";
+      if (window.BrevoConversations) window.BrevoConversations(onForm ? "hide" : "show");
+    }
+    function watch() {
+      syncChat();
+      if (!document.body || document.body.dataset.a2ChatWatch) return;
+      document.body.dataset.a2ChatWatch = "1";
+      new MutationObserver(syncChat).observe(document.body, { attributes: true, attributeFilter: ["data-page"] });
+    }
+    if (document.body) watch();
+    else document.addEventListener("DOMContentLoaded", watch);
+  })();
+</script>
 </body></html>

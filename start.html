@@ -2,6 +2,8 @@
   <link rel="stylesheet" crossorigin href="./assets/main-DyNhfDMT.css">
 </head><body data-page="start"><div id="root"></div><!-- Brevo Conversations {literal} -->
 <script>
+    window.BrevoConversationsSetup = window.BrevoConversationsSetup || {};
+    window.BrevoConversationsSetup.startHidden = true;
     (function(d, w, c) {
         w.BrevoConversationsID = '6ab4369746594be7730a5f82';
         w[c] = w[c] || function() {
@@ -72,5 +74,21 @@
     Brevo.push(["identify", { email: email, identifiers: { email_id: email }, attributes: attributes }]);
     Brevo.push(["track", "new_client_brief", properties, { email: email, company: text("company"), show: text("event") }]);
   }, true);
+</script>
+<script>
+  (function () {
+    function syncChat() {
+      var onForm = document.body && document.body.getAttribute("data-page") === "start";
+      if (window.BrevoConversations) window.BrevoConversations(onForm ? "hide" : "show");
+    }
+    function watch() {
+      syncChat();
+      if (!document.body || document.body.dataset.a2ChatWatch) return;
+      document.body.dataset.a2ChatWatch = "1";
+      new MutationObserver(syncChat).observe(document.body, { attributes: true, attributeFilter: ["data-page"] });
+    }
+    if (document.body) watch();
+    else document.addEventListener("DOMContentLoaded", watch);
+  })();
 </script>
 </body></html>
