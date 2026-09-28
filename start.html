@@ -60,8 +60,17 @@
       var value = attributes[key];
       if (value === "" || (Array.isArray(value) && value.length === 0)) delete attributes[key];
     });
-    Brevo.push(["identify", { identifiers: { email_id: email }, attributes: attributes }]);
-    Brevo.push(["track", "new_client_brief", { email: email }, { company: text("company"), show: text("event") }]);
+    var properties = {
+      email: email,
+      email_id: email,
+      FIRSTNAME: first,
+      LASTNAME: last,
+      COMPANY: text("company"),
+      PHONE: text("phone"),
+      SHOW_NAME: text("event")
+    };
+    Brevo.push(["identify", { email: email, identifiers: { email_id: email }, attributes: attributes }]);
+    Brevo.push(["track", "new_client_brief", properties, { email: email, company: text("company"), show: text("event") }]);
   }, true);
 </script>
 </body></html>
