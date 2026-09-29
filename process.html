@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content="See how A2 coordinates an exhibit project from understanding and design through visualization, fabrication, installation, and dismantle."/><meta name="theme-color" content="#071018"/><title>Process | A2 Exhibits</title>  <script type="module" crossorigin src="./assets/main-DVkPFpyv.js"></script>
+<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content="See how A2 coordinates an exhibit project from understanding and design through visualization, fabrication, installation, and dismantle."/><meta name="theme-color" content="#071018"/><title>Process | A2 Exhibits</title>  <script type="module" crossorigin src="./assets/main-DVkPFpyv.js?v=shows2"></script>
   <link rel="stylesheet" crossorigin href="./assets/main-DyNhfDMT.css">
 </head><body data-page="process"><div id="root"></div><!-- Brevo Conversations {literal} -->
 <script>
@@ -14,6 +14,74 @@
     })(document, window, 'BrevoConversations');
 </script>
 <!-- /Brevo Conversations {/literal} -->
+<script src="https://cdn.brevo.com/js/sdk-loader.js" async></script>
+<script>
+  window.Brevo = window.Brevo || [];
+  Brevo.push(["init", { client_key: "1exoqr4w5oekx4gozpxlnbjh" }]);
+  document.addEventListener("submit", function (event) {
+    var form = event.target;
+    if (!form || !form.classList || !form.classList.contains("project-form")) return;
+    var data = new FormData(form);
+    var email = String(data.get("email") || "").trim();
+    if (!email) return;
+    var parts = String(data.get("name") || "").trim().split(/\s+/);
+    var first = parts.shift() || "";
+    var last = parts.join(" ");
+    var text = function (name) { return String(data.get(name) || "").trim(); };
+    var many = function (name) { return data.getAll(name).map(String).filter(Boolean); };
+    var showName = text("event");
+    if (showName === "Other" && text("event_other")) showName = text("event_other");
+    var attributes = {
+      FIRSTNAME: first,
+      LASTNAME: last,
+      PHONE: text("phone"),
+      COMPANY: text("company"),
+      JOB_TITLE: text("job"),
+      WEBSITE: text("website"),
+      PREFERRED_CONTACT: text("contact_method") ? [text("contact_method")] : [],
+      SHOW_NAME: showName,
+      SHOW_CITY: text("city"),
+      SHOW_VENUE: text("venue"),
+      SHOW_START_DATE: text("start_date"),
+      SHOW_END_DATE: text("end_date"),
+      MOVE_IN_DATE: text("move_in"),
+      BOOTH_NUMBER: text("booth"),
+      BOOTH_SIZE: text("size"),
+      PROJECT_TYPE: text("project_type") ? [text("project_type")] : [],
+      BUDGET_RANGE: text("budget") ? [text("budget")] : [],
+      PRIMARY_GOAL: text("goal") ? [text("goal")] : [],
+      EXPECTED_VISITORS: text("visitors"),
+      DECISION_DATE: text("decision"),
+      SERVICE_NEEDS: many("services"),
+      FEATURES_NEEDED: many("features"),
+      DESIGN_ASSETS: text("assets"),
+      PROJECT_NOTES: text("message"),
+      OPT_IN: data.get("consent") === "yes"
+    };
+    Object.keys(attributes).forEach(function (key) {
+      var value = attributes[key];
+      if (value === "" || (Array.isArray(value) && value.length === 0)) delete attributes[key];
+    });
+    var properties = {
+      email: email,
+      email_id: email,
+      FIRSTNAME: first,
+      LASTNAME: last,
+      COMPANY: text("company"),
+      PHONE: text("phone"),
+      SHOW_NAME: showName
+    };
+    Brevo.push(["identify", { email: email, identifiers: { email_id: email }, attributes: attributes }]);
+    Brevo.push(["track", "new_client_brief", properties, { email: email, company: text("company"), show: showName }]);
+  }, true);
+  document.addEventListener("change", function (event) {
+    var field = event.target;
+    if (!field || field.name !== "event" || !field.form) return;
+    var other = field.form.querySelector('[name="event_other"]');
+    if (!other) return;
+    other.required = field.value === "Other";
+  });
+</script>
 <script>
   (function () {
     function syncChat() {

@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content="Prepare a project brief for your next trade show exhibit and contact A2 Exhibits in Las Vegas."/><meta name="theme-color" content="#071018"/><title>Start a Project | A2 Exhibits</title>  <script type="module" crossorigin src="./assets/main-DVkPFpyv.js"></script>
+<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content="Prepare a project brief for your next trade show exhibit and contact A2 Exhibits in Las Vegas."/><meta name="theme-color" content="#071018"/><title>Start a Project | A2 Exhibits</title>  <script type="module" crossorigin src="./assets/main-DVkPFpyv.js?v=shows2"></script>
   <link rel="stylesheet" crossorigin href="./assets/main-DyNhfDMT.css">
 </head><body data-page="start"><div id="root"></div><!-- Brevo Conversations {literal} -->
 <script>
@@ -31,6 +31,8 @@
     var last = parts.join(" ");
     var text = function (name) { return String(data.get(name) || "").trim(); };
     var many = function (name) { return data.getAll(name).map(String).filter(Boolean); };
+    var showName = text("event");
+    if (showName === "Other" && text("event_other")) showName = text("event_other");
     var attributes = {
       FIRSTNAME: first,
       LASTNAME: last,
@@ -39,7 +41,7 @@
       JOB_TITLE: text("job"),
       WEBSITE: text("website"),
       PREFERRED_CONTACT: text("contact_method") ? [text("contact_method")] : [],
-      SHOW_NAME: text("event"),
+      SHOW_NAME: showName,
       SHOW_CITY: text("city"),
       SHOW_VENUE: text("venue"),
       SHOW_START_DATE: text("start_date"),
@@ -69,11 +71,18 @@
       LASTNAME: last,
       COMPANY: text("company"),
       PHONE: text("phone"),
-      SHOW_NAME: text("event")
+      SHOW_NAME: showName
     };
     Brevo.push(["identify", { email: email, identifiers: { email_id: email }, attributes: attributes }]);
-    Brevo.push(["track", "new_client_brief", properties, { email: email, company: text("company"), show: text("event") }]);
+    Brevo.push(["track", "new_client_brief", properties, { email: email, company: text("company"), show: showName }]);
   }, true);
+  document.addEventListener("change", function (event) {
+    var field = event.target;
+    if (!field || field.name !== "event" || !field.form) return;
+    var other = field.form.querySelector('[name="event_other"]');
+    if (!other) return;
+    other.required = field.value === "Other";
+  });
 </script>
 <script>
   (function () {
